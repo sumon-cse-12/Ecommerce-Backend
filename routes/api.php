@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\SystemSettingController;
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,9 @@ Route::middleware('auth:sanctum')->group(function(){
     });
 
     Route::apiResource('/system-setting', SystemSettingController::class)->only(['index', 'update']);
+
+    Route::get('/all-categories', [CategoryController::class, 'allCategories']);
+    Route::apiResource('/category', CategoryController::class);
+
 
 });
