@@ -4,6 +4,7 @@ namespace App\Repositories\Category;
 
 use App\Models\Category;
 use Illuminate\Support\Str;
+use App\Service\FileUploadService;
 class CategoryRepository implements CategoryInterface
 {
     public function all()
@@ -22,6 +23,11 @@ class CategoryRepository implements CategoryInterface
             'name' => $request_data->name,
             'slug' => Str::slug($request_data->name),
             'description' => $request_data->description
+        ]);
+        $image_path = (new FileUploadService())->imageUpload($request_data, $data, 'image');
+
+        $data->update([
+            'image' => $image_path
         ]);
         return $data;
     }
@@ -42,7 +48,7 @@ class CategoryRepository implements CategoryInterface
     {
         $data = $this->show($id);
         $data->delete();
-        return true;
+        return $data;
     }
 
     public function show($id)

@@ -75,7 +75,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryUpdateRequest $request, string $id)
     {
-        
+
 
         try {
             $data = $this->categoryRepository->update($request, $id);

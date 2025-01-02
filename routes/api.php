@@ -20,10 +20,12 @@ Route::middleware('auth:sanctum')->group(function(){
         return $request->user();
     });
 
-    Route::apiResource('/system-setting', SystemSettingController::class)->only(['index', 'update']);
 
-    Route::get('/all-categories', [CategoryController::class, 'allCategories']);
-    Route::apiResource('/category', CategoryController::class);
 
 
 });
+    Route::apiResource('/system-setting', SystemSettingController::class)->only(['index', 'update']);
+
+    Route::get('/all-categories', [CategoryController::class, 'allCategories']);
+    Route::get('/categories/status/{id}', [CategoryController::class, 'status']);
+    Route::apiResource('/categories', CategoryController::class);
