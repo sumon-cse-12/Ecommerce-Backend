@@ -40,6 +40,11 @@ class CategoryRepository implements CategoryInterface
             'slug' => Str::slug($request_data->name),
             'description' => $request_data->description
         ]);
+        $image_path = (new FileUploadService())->imageUpload($request_data, $data, 'image');
+
+        $data->update([
+            'image' => $image_path
+        ]);
         return $data;
 
     }
