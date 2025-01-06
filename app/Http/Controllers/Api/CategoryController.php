@@ -47,6 +47,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $data = $this->categoryRepository->store($request);
         if(!$data){
             return $this->errorResponse('Category not created', 202);
