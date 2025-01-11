@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\SystemSettingController;
 /*
@@ -29,3 +30,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('/all-categories', [CategoryController::class, 'allCategories']);
     Route::get('/categories/status/{id}', [CategoryController::class, 'status']);
     Route::apiResource('/categories', CategoryController::class);
+
+
+    Route::get('/all-products', [ProductController::class, 'allProducts']);
+    Route::get('/products/status/{id}', [ProductController::class, 'status']);
+    Route::apiResource('/products', ProductController::class);

@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Product extends Model
+class ProductVariantValue extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
 
-    public function product_variants()
+    public function product_variant()
     {
-        return $this->hasMany(ProductVariant::class);
+        return $this->belongsTo(ProductVariant::class);
     }
-
 }
